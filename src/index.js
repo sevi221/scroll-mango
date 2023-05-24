@@ -1,9 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
+import Layout from "./pages/Layout";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <div>
-    MANGO SCROOOLLL
-  </div>,
-  document.getElementById('App')
-)
+  <React.StrictMode>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("App")
+);
