@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import "../assets/scss/Layout.scss";
 
 const Exercise1 = () => {
   return <h1>Exercise 1</h1>;
@@ -12,7 +13,7 @@ const Exercise2 = () => {
 const Layout = () => {
   return (
       <div>
-        <h1>Página Base</h1>
+        <h1 className="title">Página Base</h1>
         <Link to="/exercise1">
           <button>Exercise 1</button>
         </Link>

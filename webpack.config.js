@@ -1,35 +1,47 @@
-const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./index.js",
+  mode: "development",
+  output: {
+    path: path.resolve(__dirname, "./dist"),
+    filename: "index_bundle.js",
+  },
+  target: "web",
+  devServer: {
+    port: "8080",
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    open: true,
+    hot: true,
+    liveReload: true,
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".json"],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
-        options: {
-          presets: ["env", "react"],
-        },
+        use: "babel-loader",
       },
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'] 
+      }
     ],
   },
-  resolve: {
-    extensions: ["*", ".js"],
-  },
-  output: {
-    publicPath: path.resolve(__dirname, "build/"),
-    filename: "build.js",
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "public"),
-    port: 8080,
-    publicPath: "http://localhost:8080/build",
-  },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "public", "index.html"),
+    }),
+  ],
 };
