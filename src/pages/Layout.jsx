@@ -1,13 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import "../assets/scss/Layout.scss";
-
-const Exercise1 = () => <h1>Hola</h1>;
-const Exercise2 = () => <h1>Adiós</h1>;
+import Exercise1 from "../pages/Exercise1/Exercise1";
+import Exercise2 from "../pages/Exercise2/Exercise2";
 
 const Layout = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="container">
         <h1 className="title">Seleccione una opción:</h1>
         <div className="button-container">
@@ -23,7 +22,7 @@ const Layout = () => {
           <Route path="/exercise2" element={<Exercise2 />} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 

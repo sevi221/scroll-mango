@@ -3,6 +3,12 @@
   font-weight: 200;
   line-height: 1.5rem;
 }
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 .container {
   display: flex;
   flex-direction: column;
