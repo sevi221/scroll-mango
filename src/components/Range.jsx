@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useRef } from "react";
 import "../assets/scss/Range.scss";
 
-const Range = ({ min, max }) => {
+const Range = ({ min, max, rangeList, step }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(min);
@@ -34,14 +34,14 @@ const Range = ({ min, max }) => {
 
   const changeMinValue = (event) => {
     event.preventDefault();
-    const value = Math.min(Number(event.target.value), maxVal - 1);
+    const value = Math.min(Number(event.target.value), maxVal - step);
     setMinVal(value);
     minValRef.current = value;
   };
 
   const changeMaxValue = (event) => {
     event.preventDefault();
-    const value = Math.max(Number(event.target.value), minVal + 1);
+    const value = Math.max(Number(event.target.value), minVal + step);
     setMaxVal(value);
     maxValRef.current = value;
   };
@@ -54,6 +54,7 @@ const Range = ({ min, max }) => {
           min={min}
           max={max}
           value={minVal}
+          step={step}
           onChange={changeMinValue}
           className="thumb thumb--left"
         />
@@ -62,6 +63,7 @@ const Range = ({ min, max }) => {
           min={min}
           max={max}
           value={maxVal}
+          step={step}
           onChange={changeMaxValue}
           className="thumb thumb--right"
         />
@@ -70,7 +72,11 @@ const Range = ({ min, max }) => {
           <div ref={range} className="slider-range" />
           <div className="slider-values-container">
             <div className="slider-left-value">
-              <input value={minVal} onChange={changeMinValue} />
+              <input
+                readOnly={rangeList}
+                value={minVal}
+                onChange={changeMinValue}
+              />
             </div>
             <div className="slider-right-value">
               <input value={maxVal} onChange={changeMaxValue} />

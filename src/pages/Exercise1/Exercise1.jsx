@@ -5,8 +5,7 @@ import mockHttpService from "../../services/mockService";
 const Exercise1 = () => {
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(100);
-  const [step, setStep] = useState(1);
-  const [value, setValue] = useState({ min, max, step });
+  const [step, setStep] = useState(100);
 
   useEffect(() => {
     mockHttpService
@@ -15,23 +14,15 @@ const Exercise1 = () => {
         setMin(data.min);
         setMax(data.max);
         setStep(data.step);
-        setValue(data);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error("network error:", err));
   }, []);
 
   return (
-    <>
+    <div data-testid="range-component">
       <h1>Exercise1</h1>
-      <Range
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        range={[]}
-        onChangeValue={setValue}
-      />
-    </>
+      <Range min={min} max={max} step={step} />
+    </div>
   );
 };
 export default Exercise1;

@@ -1,7 +1,7 @@
 const mockHttpService = {
   getMinMaxValues() {
     return new Promise((resolve) => {
-      const minMaxValues = { min: Number(0), max: Number(100) };
+      const minMaxValues = { min: Number(0), max: Number(100), step:  Number(1)};
       resolve(minMaxValues);
     });
   },
