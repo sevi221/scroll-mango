@@ -5,7 +5,7 @@ import mockHttpService from "../../services/mockService";
 const Exercise2 = () => {
   const [min, setMin] = useState(1.99);
   const [max, setMax] = useState(100.99);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
   const [rangeList, setRangeList] = useState([]);
 
   useEffect(() => {

@@ -19,10 +19,10 @@ const Exercise1 = () => {
   }, []);
 
   return (
-    <div data-testid="range-component">
+    <>
       <h1>Exercise1</h1>
       <Range min={min} max={max} step={step} />
-    </div>
+    </>
   );
 };
 export default Exercise1;

@@ -4,7 +4,7 @@
   "description": "sroll-mango",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --verbose",
     "start": "webpack-dev-server .",
     "build": "webpack ."
   },

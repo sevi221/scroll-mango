@@ -79,7 +79,11 @@ const Range = ({ min, max, rangeList, step }) => {
               />
             </div>
             <div className="slider-right-value">
-              <input value={maxVal} onChange={changeMaxValue} />
+              <input
+                readOnly={rangeList}
+                value={maxVal}
+                onChange={changeMaxValue}
+              />
             </div>
           </div>
         </div>
