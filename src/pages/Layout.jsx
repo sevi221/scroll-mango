@@ -9,12 +9,8 @@ const Layout = () => {
     <div className="container">
       <h1 className="title">Seleccione una opción:</h1>
       <div className="button-container">
-        <button>
-          <Link to="/exercise1">Exercise 1</Link>
-        </button>
-        <button>
-          <Link to="/exercise2">Exercise 2</Link>
-        </button>
+          <Link className="btn-style" to="/exercise1">Exercise 1</Link>
+          <Link className="btn-style" to="/exercise2">Exercise 2</Link>
       </div>
       <Routes>
         <Route path="/exercise1" element={<Exercise1 />} />
