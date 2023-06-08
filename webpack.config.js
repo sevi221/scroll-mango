@@ -36,8 +36,13 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
         exclude: /node_modules/,
-        use: ['file-loader?name=[name].[ext]'] 
-      }
+        use: ["file-loader?name=[name].[ext]"],
+      },
+      {
+        test: /\.m?js$/,
+        enforce: "pre",
+        use: ["source-map-loader"],
+      },
     ],
   },
   plugins: [
