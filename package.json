@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose",
-    "start": "webpack-dev-server .",
-    "build": "webpack ."
+    "start": "webpack-dev-server ."
   },
   "jest": {
     "testEnvironment": "jsdom",

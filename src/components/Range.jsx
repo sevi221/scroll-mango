@@ -35,14 +35,16 @@ const Range = ({ min, max, step }) => {
   const changeMinValue = (event) => {
     event.preventDefault();
     const value = Math.min(Number(event.target.value), maxVal - step);
-    setMinVal(value);
+    const isValidInput = value >= 0 && value <= 100;
+    isValidInput && setMinVal(value);
     minValRef.current = value;
   };
 
   const changeMaxValue = (event) => {
     event.preventDefault();
     const value = Math.max(Number(event.target.value), minVal + step);
-    setMaxVal(value);
+    const isValidInput = value >= 0 && value <= 100;
+    isValidInput && setMaxVal(value);
     maxValRef.current = value;
   };
 
@@ -73,13 +75,19 @@ const Range = ({ min, max, step }) => {
           <div className="slider-values-container">
             <div className="slider-left-value">
               <input
-                value={minVal}
+                type="number"
+                min={0}
+                max={100}
+                value={parseFloat(minVal).toString()}
                 onChange={changeMinValue}
               />
             </div>
             <div className="slider-right-value">
               <input
-                value={maxVal}
+                type="number"
+                min={0}
+                max={100}
+                value={parseFloat(maxVal).toString()}
                 onChange={changeMaxValue}
               />
             </div>
